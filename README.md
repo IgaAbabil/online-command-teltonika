@@ -2,7 +2,7 @@
 
 Cari perintah GPS tracker Teltonika cukup dengan satu kata kunci. Ketik "suhu", "apn", atau nomor ID, lalu langsung dapat perintah `readio`, `getparam`, atau `setparam` yang siap disalin dan dikirim ke perangkat.
 
-**Buka web:** https://NAMAPENGGUNA.github.io/online-command-teltonika/
+**Buka web:** https://Igaababil.github.io/online-command-teltonika/
 
 Dibuat oleh **Iga Ababil**.
 
