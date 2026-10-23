@@ -1,8 +1,8 @@
 # Online Command Teltonika
 
-Cari perintah GPS tracker Teltonika cukup dengan satu kata kunci. Ketik "suhu", "apn", atau nomor ID, lalu langsung dapat perintah `readio`, `getparam`, atau `setparam` yang siap disalin dan dikirim ke perangkat.
+Cari perintah GPS tracker Teltonika cukup dengan satu kata kunci. Ketik "suhu", "apn", atau nomor ID, lalu langsung dapat perintah SMS/GPRS, `readio`, `getparam`, atau `setparam` yang siap disalin dan dikirim ke perangkat.
 
-**Buka web:** https://Igaababil.github.io/online-command-teltonika/
+**Buka web:** https://igaababil.github.io/online-command-teltonika/
 
 Dibuat oleh **Iga Ababil**.
 
@@ -15,7 +15,8 @@ Saat instalasi atau pengecekan unit di lapangan, teknisi sering harus membuka wi
 ## Fitur
 
 - **Pencarian satu kata.** Bisa memakai bahasa Indonesia (suhu, aki, pintu, sinyal), nama sensor atau parameter (Dallas Temperature, APN), maupun nomor ID (72, 2001).
-- **Tiga jenis perintah dalam satu tempat.**
+- **Perintah SMS/GPRS umum.** 68 perintah seperti `getgps`, `ggps`, `getver`, `cpureset`, `setdigout`, `flush`, `odoset`, serta perintah Bluetooth, OBD, dan CAN adapter. Perintah yang butuh argumen punya formulir isian yang membentuk perintahnya otomatis, dan perintah berisiko diberi peringatan.
+- **Perintah berbasis ID.**
   - `readio <ID>` untuk membaca nilai I/O element.
   - `getparam <ID>` untuk membaca konfigurasi.
   - `setparam <ID>:<nilai>` untuk mengubah konfigurasi.
@@ -31,6 +32,9 @@ Saat instalasi atau pengecekan unit di lapangan, teknisi sering harus membuka wi
 
 | Yang dicari | Ketik | Hasil teratas |
 |---|---|---|
+| Cek lokasi | `lokasi` | `getgps` |
+| Nyalakan relay | `relay` | `setdigout <DOUT1><DOUT2>` |
+| Restart perangkat | `restart` | `cpureset` |
 | Baca suhu sensor 1 | `temp1` | `readio 72` |
 | Atur APN | `set apn` | `setparam 2001:<nilai>` |
 | Alarm suhu | `set temp` | `setparam 50310` s/d `50313` |
@@ -51,6 +55,8 @@ Jika login dan password SMS di perangkat kosong, awali perintah dengan dua spasi
   readio 72
 ```
 
+Semua perintah peka huruf besar/kecil. SMS ke perangkat yang sedang Deep Sleep baru diterima setelah perangkat bangun, sedangkan perintah GPRS (yang memakai protokol Codec 12) tidak akan diterima.
+
 Login dan password SMS diatur di parameter `3003` dan `3004`. Sangat disarankan untuk mengisinya agar perangkat tidak bisa dikendalikan oleh nomor sembarang.
 
 ## Sumber data
@@ -59,6 +65,7 @@ Data diambil dari Teltonika Wiki untuk FMB130 (firmware FMB.Ver.03.29.00 ke atas
 
 - *FMB130 Teltonika Data Sending Parameters ID* untuk daftar I/O element.
 - *FMB130 Parameter list* untuk daftar parameter konfigurasi.
+- *FMB130 SMS/GPRS Commands* untuk daftar perintah umum.
 
 Sebagian besar ID juga berlaku untuk seri FMB lain, tetapi beberapa model punya I/O atau parameter yang berbeda. Selalu cocokkan dengan dokumentasi model perangkat yang dipakai.
 
